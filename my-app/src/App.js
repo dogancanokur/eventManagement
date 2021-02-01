@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter, Route, Switch} from "react-router-dom";
+import Home from "./component/Home";
+import GroupList from "./component/GroupList";
+import AppNavbar from "./component/AppNavbar";
+import {Container} from "reactstrap";
 
 class App extends Component {
 
@@ -12,8 +16,9 @@ class App extends Component {
     async componentDidMount() {
         const response = await fetch('/api/groups');
         const body = await response.json();
-        this.setState({ groups: body, isLoading: false });
+        this.setState({groups: body, isLoading: false});
     }
+
     render() {
         const {groups, isLoading} = this.state;
 
@@ -22,17 +27,15 @@ class App extends Component {
         }
 
         return (
-            <div className="App">
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo"/>
-                    <div className="App-intro">
-                        <h2>Event List</h2>
-                        {groups.map(group => (
-                            <div key={group.id}>{group.name}</div>
-                        ))}
-                    </div>
-                </header>
-            </div>
+            <BrowserRouter>
+                <AppNavbar/>
+                <Container fluid>
+                    <Switch>
+                        <Route path="/" exact component={Home}/>
+                        <Route path="/groups" exact component={GroupList}/>
+                    </Switch>
+                </Container>
+            </BrowserRouter>
         );
     }
 }
