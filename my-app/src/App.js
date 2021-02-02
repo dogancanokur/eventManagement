@@ -5,6 +5,7 @@ import Home from "./component/Home";
 import GroupList from "./component/GroupList";
 import AppNavbar from "./component/AppNavbar";
 import {Container} from "reactstrap";
+import GroupEdit from "./component/GroupEdit";
 
 class App extends Component {
 
@@ -33,6 +34,7 @@ class App extends Component {
                     <Switch>
                         <Route path="/" exact component={Home}/>
                         <Route path="/groups" exact component={GroupList}/>
+                        <Route path="/groups/:id" component={GroupEdit}/>
                     </Switch>
                 </Container>
             </BrowserRouter>

@@ -70,6 +70,7 @@ class GroupList extends Component {
                                         <ButtonGroup>
                                             <Button size="sm"
                                                     tag={Link}
+                                                    to={"/groups/" + group.id}
                                                     color="primary">Edit</Button>
                                             <Button size="sm"
                                                     tag={Link}
