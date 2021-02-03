@@ -1,0 +1,12 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          okta:
+            client-id: { clientId }
+            client-secret: { clientSecret }
+            scope: openid, email, profile
+        provider:
+          okta:
+            issuer-uri: { url }
